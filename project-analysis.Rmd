@@ -1,0 +1,1019 @@
+---
+title: "Health Outcome in South Caucasus"
+author: "Kima Badalyan, Syuzanna Harutyunyan, Narek Ghukasyan, Husik Sargsyan"
+date: "2024-12-01"
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+header-includes:
+  - \usepackage{hyperref}
+  - \hypersetup{
+      colorlinks=true,
+      linkcolor=blue,
+      urlcolor=blue
+    }
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F)
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(GGally)
+library(readxl)
+library(ggmap)
+library(maps)
+library(sf)
+library(lubridate)
+library(scales)
+library(gganimate)
+library(gifski)
+library(fmsb)
+library(RColorBrewer)
+library(animation)
+library(gridExtra)
+
+```
+
+## Abstract
+
+The healthcare systems in Armenia, Georgia, and Azerbaijan share common regional factors that impact health outcomes. Still, each country faces various challenges that affect life expectancy, disease prevalence, and healthcare quality. Existing research indicates that all three countries have employed very similar strategies in financing their healthcare systems. This study utilizes several datasets related to physical and mental health, as well as other side influences, to analyze these patterns. The objective is to determine whether these similar strategies have resulted in comparable health outcomes across the countries. The report examines how cultural, historical/political factors contribute to health disparities across the region, with findings suggesting that unique national issues lead to varying health outcomes.
+
+
+## Keywords 
+
+Caucasus Region, Healthcare Systems, Health Outcomes, Healthcare Financing, Public Health, Health Indicators, Economic Transition, Healthcare Infrastructure,Vulnerable Populations, Healthcare Accessibility.
+
+## Introduction
+The Caucasus region, including Armenia, Georgia, and Azerbaijan, is geographically and culturally diverse, yet these countries share a common historical background and face similar regional issues and challenges. Regardless of these common factors, the health outcomes in each country vary significantly, more specifically in life expectancy, disease prevalence, and the overall quality of healthcare. 
+The aim of this study is to explore the factors contributing to these disparities, focusing on both the physical and mental health sectors. By examining datasets that surround a range of health indicators, this study investigates how social and economical conditions, healthcare infrastructure, cultural and political factors influence health outcomes in Armenia, Georgia, and Azerbaijan. While the countries share some regional components - such as economic transitions and the legacy of Soviet-era healthcare systems - the unique national circumstances in each country play a crucial role in shaping public health results.
+
+## Literature Review 
+
+Georgia's healthcare system underwent significant changes after gaining independence from the Soviet Union. Initially, the Georgian government created the State Medical Insurance Company to manage healthcare payments and state insurance funding. However, this system failed due to widespread corruption, economic challenges, and a weak state infrastructure, leading to high out-of-pocket costs that comprised many healthcare expenditures. In 2006, a second reform was initiated to improve financial accessibility, especially for vulnerable populations. The government replaced mandatory insurance contributions with general taxes, and health vouchers were provided to the most susceptible individuals. These vouchers allowed recipients to purchase private insurance, which led to increased competition among private insurers and investments in healthcare facilities.
+Similarly, in Armenia, the primary source of healthcare financing is general tax revenues, with income and social taxes combined into a single income tax since 2013. The funds for state health programs are managed by the Agency for Social Services, operating a single-payer system for healthcare financing. In 1997, Armenia introduced a "Package of Basic Benefits," which includes a universal set of services such as primary healthcare and sanitary-epidemiological services. Additional services are provided to specific population groups, including disabled individuals, veterans, low-income families, pensioners, and children under 18. The services covered by the basic package and the groups eligible for these services are regularly reassessed based on the government's budgetary and political priorities.
+Azerbaijan's healthcare system largely follows the Soviet-era Semashko model, characterized by centralized planning and state ownership of healthcare facilities with no clear division between providers and purchasers of services. Healthcare in Azerbaijan is officially free, as mandated by the Law on Health and Healthcare Provision, and since 2008, the country has operated a state-guaranteed Basic Benefits Package. However, in practice, patients often have to make unofficial payments for services that are technically covered by the state. Healthcare in Azerbaijan is primarily funded by general tax revenues, with 63% of state health expenditures managed by the Ministry of Health and 37% by municipal authorities. However, despite this level of spending, the quality and accessibility of healthcare services remain concerns due to informal payments and insufficient resource allocation.
+The healthcare systems of Georgia, Armenia, and Azerbaijan share several similarities due to their post-Soviet transitions and common regional factors. All three countries rely on state funding through general tax revenues, focusing on providing essential healthcare services to their populations, particularly vulnerable groups. These similarities in healthcare structure and funding systems led us to explore whether such commonalities result in comparable health outcomes across these nations. By analyzing these countries' healthcare systems, we aim to determine if the shared challenges also indicate similar health results for the populations.
+
+## Methodology 
+This study uses a combination of data analysis and a review of existing literature to explore health outcomes in those countries. The goal is to identify similar patterns and to understand how both shared regional factors and country-specific challenges influence health outcomes.
+
+### 1. Data Collection:
+We used publicly available datasets from trusted sources such as the World Health Organization (WHO), Macro Trends.net, United Nations, etc.
+ The data includesLife expectancy, Disease Rates, Healthcare Quality, Mental Health, Alcohol Usage, Access to High Quality Water, etc. 
+
+### 2. Data Cleaning. 
+During the data preparation process, some of the datasets were subsetted using Excel to focus specifically on data related to Armenia, Georgia, and Azerbaijan. Redundant entries were removed, ensuring a more streamlined and focused dataset for subsequent analysis.
+
+### 3. Data Analysis:
+
+Descriptive Analysis: We began by summarizing key health indicators for each country. This helped us get an overall picture of the health status in Armenia, Georgia, and Azerbaijan.
+
+Comparing Countries: We compared health indicators across the countries to understand how they differ or are similar, focusing on factors like disease rates and healthcare access.
+
+Trend Analysis: We looked at how health outcomes have changed over the years, particularly since the countries became independent from the Soviet Union, to understand the impact of economic and political changes.
+
+
+## Results and Discussion 
+#### [Population Change Over Time  (Hyperlink, click on it or look in the Github for 'Animations' folder for better quality)](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDFtcWNqeW00aTQxZXV4aWx6dml4NXJzbzh5cngyMW40MWRmdGNiaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WZOGP2Ytq36ThLyBDW/giphy.gif)
+
+The chart depicts cumulative population growth over time in Armenia, Azerbaijan, and Georgia, highlighting distinct trends in each country from 1960 onward.
+
+All three countries experienced steady cumulative population growth from 1960 to approximately 1990. However, Armenia and Georgia witnessed significant population declines after this period. In Armenia, the Spitak Earthquake of 1988, which claimed an estimated 25,000 to 50,000 lives and displaced many more, contributed to the decline. Additionally, the first Nagorno-Karabakh (NK) war from 1988 to 1994, which resulted in approximately 7,000 deaths and the displacement of 300,000 to 500,000 people, further impacted population growth. These events, combined with high migration rates in the post-Soviet period, led to a reversal in cumulative growth trends.
+
+Similarly, Georgia’s population decline can be attributed to the Georgian Civil War from 1991 to 1993, which caused an estimated 20,000 deaths and created 260,000 refugees. Following this period, significant emigration contributed to the continued reduction in cumulative population growth.
+
+In contrast, Azerbaijan demonstrated a steady increase in population growth over the same period. The country’s larger overall population and relative stability meant that the Nagorno-Karabakh war had a less pronounced effect on its cumulative population growth, allowing it to maintain a consistent upward trajectory.
+
+``` {r, echo = FALSE}
+demographics_data <- read_excel("Datasets_Clean/Demographic_ARM_AZE_GEO.xlsx")
+
+gender_data <- demographics_data %>%
+  filter(`Region, subregion, country or area *` %in% c("Armenia", "Azerbaijan", "Georgia")) %>%
+  select(Year, `Region, subregion, country or area *`, 
+         `Male Population, as of 1 July (thousands)`, 
+         `Female Population, as of 1 July (thousands)`) %>%
+  pivot_longer(
+    cols = c(`Male Population, as of 1 July (thousands)`, 
+             `Female Population, as of 1 July (thousands)`),
+    names_to = "Gender",
+    values_to = "Population"
+  ) %>%
+  mutate(Gender = recode(
+    Gender,
+    "Male Population, as of 1 July (thousands)" = "Male",
+    "Female Population, as of 1 July (thousands)" = "Female"
+  ))
+
+ggplot(gender_data, aes(x = Year, y = Population, fill = Gender)) +
+  geom_area(alpha = 0.6, size = 1, colour = "white") +
+  facet_wrap(~ `Region, subregion, country or area *`) +
+  labs(
+    title = "Gender Distribution Over Time Accross Countries",
+    x = "Year",
+    y = "Population (thousands)",
+    fill = "Gender"
+  ) +
+  scale_fill_manual(values = c("Male" = "#ADD8E6", "Female" = "#8B0000")) +  
+  theme_minimal() +
+  theme(
+    plot.title = element_text(
+      size = 18, face = "bold", hjust = 0.5, color = "#2F4F4F",
+      margin = margin(b = 10)
+    ),
+    strip.text = element_text(size = 12, face = "bold", color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 45, hjust = 1, color = "#2F4F4F"),
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    legend.position = "top",
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F")
+  )
+
+
+```
+
+The graph shows the changes in male and female populations over time in Armenia, Azerbaijan, and Georgia from 1960 to 2020. The male and female populations are stacked on top of each other to represent the total population.
+
+While the female population is slightly larger than the male population in all three countries, the difference is not very pronounced in the graph. This subtle difference could be attributed to slightly higher male mortality rates or male emigration. 
+
+```  {r, echo = FALSE}
+files <- list(
+  "Armenia_Rural" = "Datasets_Clean/armenia-rural-population.csv",
+  "Armenia_Urban" = "Datasets_Clean/armenia-urban-population.csv",
+  "Azerbaijan_Rural" = "Datasets_Clean/azerbaijan-rural-population.csv",
+  "Azerbaijan_Urban" = "Datasets_Clean/azerbaijan-urban-population.csv",
+  "Georgia_Rural" = "Datasets_Clean/georgia-rural-population.csv",
+  "Georgia_Urban" = "Datasets_Clean/georgia-urban-population.csv"
+)
+
+combined_data <- data.frame()
+
+for (key in names(files)) {
+  data <- read_csv(files[[key]])
+  country <- strsplit(key, "_")[[1]][1]
+  type <- strsplit(key, "_")[[1]][2]   
+  data <- data %>%
+    rename(Population = if_else(type == "Rural", "Rural Population", "Urban Population")) %>%
+    mutate(
+      Country = country,
+      Type = type,
+      Year = year(mdy(Date))  
+    )
+  combined_data <- bind_rows(combined_data, data)
+}
+
+latest_year <- max(combined_data$Year, na.rm = TRUE)
+filtered_data <- combined_data %>%
+  filter(Year >= (latest_year - 9))
+
+summary_data <- filtered_data %>%
+  group_by(Country, Year, Type) %>%
+  summarise(Total_Population = sum(Population, na.rm = TRUE), .groups = 'drop') %>%
+  group_by(Country, Year) %>%
+  mutate(Percentage = Total_Population / sum(Total_Population) * 100)
+
+viz_data <- summary_data %>%
+  select(Country, Year, Type, Percentage) %>%
+  rename(Population = Percentage)
+
+type_palette <- c(
+  "Urban" = "#ADD8E6", 
+  "Rural" = "#8B0000"  
+)
+
+all_years <- unique(viz_data$Year)
+
+ggplot(viz_data, aes(x = Year, y = Population, fill = Type)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_wrap(~ Country, scales = "free_x") +
+  labs(
+    title = "Urban vs Rural Population Percentages Across Countries",
+    x = "Year",
+    y = "Percentage",
+    fill = "Population Type"
+  ) +
+  scale_fill_manual(values = type_palette) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  scale_x_continuous(
+    breaks = all_years,  
+    labels = all_years
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 90, hjust = 0.3),
+    strip.text = element_text(size = 14, face = "bold", color = "#2F4F4F"), 
+    legend.position = "top",  
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+  )
+
+```
+The visualization highlights urban and rural population distributions in Armenia, Azerbaijan, and Georgia over the past decade, showing strong similarities across the three countries. In all cases, the urban population makes up slightly more than half of the total population. However, while Armenia’s urban-rural distribution has remained unchanged over time, both Georgia and Azerbaijan show a slight increase in urban populations. These trends suggest gradual urbanization in Georgia and Azerbaijan, while Armenia’s distribution remains static, reflecting differing migration or development patterns across the region.
+
+``` {r, echo = FALSE}
+armenia_data <- read.csv("Datasets_Clean/armenia-clean-water-access-statistics.csv", skip = 8)
+azerbaijan_data <- read.csv("Datasets_Clean/azerbaijan-clean-water-access-statistics.csv", skip = 8)
+georgia_data <- read.csv("Datasets_Clean/georgia-clean-water-access-statistics.csv", skip = 8)
+
+colnames(armenia_data) <- c("Date", "percentage_of_population", "annual_change")
+colnames(azerbaijan_data) <- c("Date", "percentage_of_population", "annual_change")
+colnames(georgia_data) <- c("Date", "percentage_of_population", "annual_change")
+
+
+armenia_data$Date <- as.Date(armenia_data$Date, format = "%m/%d/%Y")
+azerbaijan_data$Date <- as.Date(azerbaijan_data$Date, format = "%m/%d/%Y")
+georgia_data$Date <- as.Date(georgia_data$Date, format = "%m/%d/%Y")
+
+
+armenia_data$Country <- "Armenia"
+azerbaijan_data$Country <- "Azerbaijan"
+georgia_data$Country <- "Georgia"
+
+combined_data <- bind_rows(armenia_data, azerbaijan_data, georgia_data)
+
+country_palette <- c(
+  "Armenia" = "#8B0000", 
+  "Azerbaijan" = "#000080",  
+  "Georgia" = "#ADD8E6"  
+)
+
+ggplot(combined_data, aes(x = Date, y = percentage_of_population, color = Country)) +
+  geom_line(size = 1.2) +
+  labs(
+    title = "Clean Water Access Across Countries",
+    x = "Year",
+    y = "Percentage of Population",
+    color = "Country"
+  ) +
+  scale_color_manual(values = country_palette) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "top",  
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+
+  )
+
+
+```
+The visualization depicts clean water access in Armenia, Azerbaijan, and Georgia from 2000 to 2020. Armenia demonstrates consistently high access rates, exceeding 90% throughout the period, reflecting well-established water infrastructure. In contrast, both Azerbaijan and Georgia show steady progress, with Azerbaijan improving from below 60% in 2000 to nearly 80% in 2020, and Georgia increasing from around 65% to 80% over the same period. While Armenia leads in clean water access, the notable improvements in Azerbaijan and Georgia highlight their efforts to expand and modernize water infrastructure, addressing disparities and enhancing public health outcomes.
+
+```  {r, echo = FALSE}
+
+healthecare_data<- read_excel("Datasets_Clean/healthcare.xlsx")
+
+filtered_data <- healthecare_data  %>%
+  filter(`Economy Name` %in% c("Armenia", "Azerbaijan", "Georgia"))
+
+
+filtered_poverty_data <- filtered_data %>%
+  filter(
+    `Indicator` == "Poverty rate, % of pop" &
+    `Attribute 1` == "Score" 
+  ) %>%
+  select(`Economy Name`, `2021`)
+
+
+country_palette <- c(
+  "Armenia" = "#8B0000",  
+  "Azerbaijan" = "#000080", 
+  "Georgia" = "#ADD8E6" 
+)
+
+ggplot(filtered_poverty_data, aes(x = `Economy Name`, y = `2021`, fill = `Economy Name`)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  labs(
+    title = "Poverty Rate Across Countries in 2021",
+    x = "Country",
+    y = "Poverty Rate (%)",
+    fill = "Country"
+  ) +
+  scale_fill_manual(values = country_palette) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 0, hjust = 0.5),
+    legend.position = "none",  
+  )
+
+
+```
+The bar graph shows the poverty rates in 2021 for Armenia, Azerbaijan, and Georgia. Azerbaijan has the highest poverty rate, followed closely by Armenia, while Georgia has the lowest. This suggests that economic conditions in Georgia might have been slightly better or more stable, making it easier to reduce poverty in 2021. The higher poverty rate in Azerbaijan, which has a larger population, could indicate that a larger population places more strain on resources, making it harder to reduce poverty effectively. Armenia, with a smaller population, might have found it easier to implement targeted poverty-reduction strategies. However, this doesn't mean poverty is less of a problem in Armenia or Georgia, as smaller populations can still face significant challenges, especially if wealth distribution or access to services is uneven. 
+
+
+```  {r, echo = FALSE}
+filtered_data <- healthecare_data  %>%
+  filter(`Economy Name` %in% c("Armenia", "Azerbaijan", "Georgia"))
+filtered_education_data <- filtered_data %>%
+  filter(
+    `Indicator` == "Education system's ability to meet needs, 1-7 (best)" &
+    `Attribute 1` == "Score"
+  ) %>%
+  select(`Economy Name`, `2019`, `2021`)
+
+
+education_long <- filtered_education_data %>%
+  pivot_longer(cols = c(`2019`, `2021`), names_to = "Year", values_to = "Score")
+
+year_palette <- c(
+  "2019" = "#8B0000", 
+  "2021" = "#ADD8E6"  
+)
+
+ggplot(education_long, aes(x = `Economy Name`, y = Score, fill = Year)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  labs(
+    title = "Education System's Ability to Meet Needs",
+    subtitle = "Scores are rated on a 1-7 scale, with higher values indicating better performance (2019)",
+    x = "Country",
+    y = "Score",
+    fill = "Year"
+  ) +
+  scale_fill_manual(values = year_palette) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "#2F4F4F"),  
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 0, hjust = 0.5),
+    legend.position = "top",  
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+  )
+
+```
+The bar chart compares how well the education systems in Armenia, Azerbaijan, and Georgia met needs on a 1-7 scale in 2019 and 2021. In Armenia, the score slightly dropped from 2019 to 2021, suggesting that the education system became a little less effective. Azerbaijan showed the biggest improvement, meaning it made progress in meeting educational needs. Georgia also saw an improvement in its score. In 2021, Azerbaijan had the highest score, followed by Georgia, while Armenia had the lowest score in both years. Overall, Azerbaijan and Georgia made positive progress, while Armenia saw a small decline in its education system's ability to meet needs. 
+
+#### [Healthcare Spending Over Time  (Hyperlink, click on it or look in the Github for 'Animations' folder for better quality)](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3FsYmt3NmJvcGttazM0cjhhMWV4dnlhZWh3cTVkamoyYzV2bzh1aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Z3dBxJMLKKIz5FsoOa/giphy.gif)
+
+The plot illustrates healthcare spending trends per capita in Armenia, Azerbaijan, and Georgia from 2000 to 2022. Initially, in 2000, Georgia had the highest healthcare spending per capita, while Azerbaijan recorded the lowest. Both Georgia and Armenia exhibited a steady increase in healthcare spending per capita until around 2009–2010, at which point their spending converged, showing similar values for a few years. Subsequently, Armenia surpassed Georgia, maintaining a higher level of healthcare spending per capita for an extended period.
+Azerbaijan displayed a steady upward trajectory in healthcare spending from 2000 to around 2015, although it consistently lagged behind Georgia and Armenia during this period. However, after 2015, all three countries experienced a noticeable decline in healthcare spending per capita. In the years following this decline, Azerbaijan’s spending began to increase steadily again.
+During the COVID-19 pandemic in 2020, healthcare spending in all three countries saw a significant increase, likely reflecting the heightened need for medical resources and investments in public health systems. By 2022, the spending trends continued to diverge, with Azerbaijan recovering strongly, Georgia stabilizing, and Armenia maintaining its higher level of expenditure.
+This chart reflects differences in healthcare investment strategies across the three countries, with Armenia emerging as a leader in healthcare spending per capita during the latter half of the timeline.
+
+```  {r, echo = FALSE}
+armHealthcareSpending <-   read_csv("Datasets_Clean/armenia-healthcare-spending.csv")
+colnames(armHealthcareSpending)[2:3] <- colnames(armHealthcareSpending)[3:2]
+armHealthcareSpending <- armHealthcareSpending[ , -ncol(armHealthcareSpending)]
+
+geoHealthcareSpending <- read_csv("Datasets_Clean/georgia-healthcare-spending.csv")
+colnames(geoHealthcareSpending)[2:3] <- colnames(geoHealthcareSpending)[3:2]
+geoHealthcareSpending <- geoHealthcareSpending[ , -ncol(geoHealthcareSpending)]
+
+azeHealthcareSpending <- read_csv("Datasets_Clean/azerbaijan-healthcare-spending.csv")
+colnames(azeHealthcareSpending)[2:3] <- colnames(azeHealthcareSpending)[3:2]
+azeHealthcareSpending <- azeHealthcareSpending[ , -ncol(azeHealthcareSpending)]
+
+inflation_rate <- 0.04
+base_year <- 2000
+
+armHealthcareSpending <- armHealthcareSpending %>%
+  mutate(
+    Years_From_Base = year(Date) - base_year,
+    Inflation_Factor = (1 + inflation_rate) ^ Years_From_Base
+  ) %>%
+  mutate(
+    Adjusted_GDP = `GDP (Billions of US $)` / Inflation_Factor,
+    Adjusted_Per_Capita = `Per Capita (US $)` / Inflation_Factor
+  ) %>%
+  select(-Years_From_Base, -Inflation_Factor)
+
+
+geoHealthcareSpending <- geoHealthcareSpending %>%
+  mutate(
+    Years_From_Base = year(Date) - base_year,
+    Inflation_Factor = (1 + inflation_rate) ^ Years_From_Base
+  ) %>%
+  mutate(
+    Adjusted_GDP = `GDP (Billions of US $)` / Inflation_Factor,
+    Adjusted_Per_Capita = `Per Capita (US $)` / Inflation_Factor
+  ) %>%
+  select(-Years_From_Base, -Inflation_Factor)
+
+azeHealthcareSpending <- azeHealthcareSpending %>%
+  mutate(
+    Years_From_Base = year(Date) - base_year,
+    Inflation_Factor = (1 + inflation_rate) ^ Years_From_Base
+  ) %>%
+  mutate(
+    Adjusted_GDP = `GDP (Billions of US $)` / Inflation_Factor,
+    Adjusted_Per_Capita = `Per Capita (US $)` / Inflation_Factor
+  ) %>%
+  select(-Years_From_Base, -Inflation_Factor)
+
+
+armLifeExp <- read_csv("Datasets_Clean/Armenia-.csv", 
+                       show_col_types = FALSE)
+azeLifeExp <- read_csv("Datasets_Clean/Azerbaijan-.csv", 
+                       show_col_types = FALSE)
+geoLifeExp <- read_csv("Datasets_Clean/Georgia-.csv", 
+                       show_col_types = FALSE)
+
+
+armData <- merge(armLifeExp, armHealthcareSpending, by = "Date")
+
+armData <- armData %>%
+  mutate(
+    Spending_Rescaled = (Adjusted_Per_Capita - min(Adjusted_Per_Capita)) / 
+                        (max(Adjusted_Per_Capita) - min(Adjusted_Per_Capita)) * 100,
+    LifeExp_Rescaled = (`Life Expectancy` - min(`Life Expectancy`)) / 
+                       (max(`Life Expectancy`) - min(`Life Expectancy`)) * 100
+    
+  )
+
+
+azeData <- merge(azeLifeExp, azeHealthcareSpending, by = "Date")
+
+azeData <- azeData %>%
+  mutate(
+    Spending_Rescaled = (Adjusted_Per_Capita - min(Adjusted_Per_Capita)) / 
+                        (max(Adjusted_Per_Capita) - min(Adjusted_Per_Capita)) * 100,
+    LifeExp_Rescaled = (`Life Expectancy` - min(`Life Expectancy`)) / 
+                       (max(`Life Expectancy`) - min(`Life Expectancy`)) * 100
+  )
+
+
+geoData <- merge(geoLifeExp, geoHealthcareSpending, by = "Date")
+
+geoData <- geoData %>%
+  mutate(
+    Spending_Rescaled = (Adjusted_Per_Capita - min(Adjusted_Per_Capita)) / 
+                        (max(Adjusted_Per_Capita) - min(Adjusted_Per_Capita)) * 100,
+    LifeExp_Rescaled = (`Life Expectancy` - min(`Life Expectancy`)) / 
+                       (max(`Life Expectancy`) - min(`Life Expectancy`)) * 100
+  )
+
+
+armData$`% change` <- as.numeric(armData$`% change`)
+geoData$`% change` <- as.numeric(geoData$`% change`)
+azeData$`% change` <- as.numeric(azeData$`% change`)
+
+armData <- armData %>% mutate(Region = "Armenia")
+geoData <- geoData %>% mutate(Region = "Georgia")
+azeData <- azeData %>% mutate(Region = "Azerbaijan")
+combined_data <- bind_rows(armData, geoData, azeData)
+combined_data$Date <- as.Date(combined_data$Date)
+
+
+combined_data$Year <- year(combined_data$Date)
+
+region_palette <- c(
+  "Armenia" = "#8B0000",
+  "Azerbaijan" = "#000080",
+  "Georgia" = "#ADD8E6"
+)
+
+
+combined_data <- bind_rows(
+  armData %>% mutate(Country = "Armenia"),
+  geoData %>% mutate(Country = "Georgia"),
+  azeData %>% mutate(Country = "Azerbaijan")
+)
+
+metric_palette <- c(
+  "Healthcare Spending Per Capita" = "#8B0000", 
+  "Life Expectancy" = "#ADD8E6" 
+)
+
+health_life_exp <- ggplot(data = combined_data, aes(x = Date)) +
+  geom_line(aes(y = Spending_Rescaled, color = "Healthcare Spending Per Capita"), size = 1.5) +
+  geom_line(aes(y = LifeExp_Rescaled, color = "Life Expectancy"), size = 1.5) +
+  scale_y_continuous(name = "Rescaled Values (0-100)") +
+  scale_color_manual(values = metric_palette) +
+  labs(
+    title = "Healthcare Spending Per Capita vs Life Expectancy",
+    x = "Year",
+    color = "Metric"
+  ) +
+  facet_wrap(~Country) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    strip.text = element_text(size = 14, face = "bold", color = "#2F4F4F"), 
+    legend.position = "top", 
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+  )
+
+health_life_exp
+
+```
+
+This plot represents the relationship between healthcare spending per capita and life expectancy across Armenia, Georgia, and Azerbaijan over time. To make the comparison clearer, both metrics—healthcare spending and life expectancy—have been rescaled to a 0-100 range. This rescaling highlights relative changes within each country rather than absolute values, emphasizing how these variables trend together or diverge over time.
+The visualization suggests that, despite fluctuations in healthcare spending, life expectancy remains relatively constant across all three countries. In Azerbaijan, life expectancy exhibits a steady and consistent trend, showing little correlation with the changes in healthcare spending. This indicates that increased investment in healthcare may not have had a substantial immediate impact on extending life expectancy.
+In Georgia and Armenia, a similar pattern emerges. Even during peaks and declines in healthcare spending, life expectancy remains largely unchanged. The scaled visualization highlights that, despite higher spending at certain points, life expectancy differences across the countries are minimal—amounting to just one or two years in real values.
+This suggests that factors beyond healthcare spending, such as broader social, economic, and environmental conditions, play a more critical role in determining life expectancy. While healthcare investment is essential, its impact on life expectancy appears limited in this context, with changes in spending showing little immediate effect.
+
+```  {r, echo = FALSE}
+filtered_data <- healthecare_data  %>%
+  filter(`Economy Name` %in% c("Armenia", "Azerbaijan", "Georgia"))
+
+country_palette <- c(
+  "Armenia" = "#8B0000", 
+  "Azerbaijan" = "#000080", 
+  "Georgia" = "#ADD8E6" 
+)
+
+ggplot(filtered_data %>%
+         filter(Indicator == "Accessibility of healthcare services, 1-7 (best)" &
+                `Attribute 1` == "Score") %>%
+         mutate(`Economy Name` = reorder(`Economy Name`, `2019`))) +
+  aes(x = `Economy Name`, y = `2019`, fill = `Economy Name`) +
+  geom_col(width = 0.7) +
+  scale_fill_manual(values = country_palette) +
+  labs(
+    title = "Healthcare Accessibility Comparison",
+    subtitle = "Scores are rated on a 1-7 scale, with higher values indicating better accessibility",
+    x = "Country",
+    y = "Accessibility Score",
+    fill = "Country"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "#2F4F4F"),
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    legend.position = "top",  
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+  
+  )
+
+```
+The chart illustrates the disparities in healthcare accessibility across Armenia, Georgia, and Azerbaijan, measured on a 1–7 scale. Azerbaijan emerges as the leader with the highest score, reflecting a relatively effective healthcare system, possibly supported by stronger infrastructure, better funding, and more effective policy measures. Georgia follows with a score almost as good, indicating some progress in improving healthcare accessibility. Armenia, however, shows the lowest score, suggesting significant challenges in providing accessible healthcare services, potentially due to limited resources, weaker infrastructure, or less effective policies. These results underscore regional disparities, highlighting Azerbaijan's leadership in healthcare accessibility while emphasizing the need for targeted efforts in Armenia to improve healthcare outcomes.
+
+#### [Healthcare Professionals Density Over Time (Hyperlink, click on it or look in the Github for 'Animations' folder for better quality)](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnp5bTYxMnBmeTg0YzZwN2tpaHQ1ZDZ4NTV5bTlyMzY3cTJ5aWE2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qTaxN01WMdgFIlDrRY/giphy.gif)
+
+ The animation provides a comparative analysis of the density of healthcare professionals, specifically nurses and doctors, in Azerbaijan, Georgia, and Armenia over a twenty-year period.
+
+In 2000, Azerbaijan had the highest density of nurses, while the density of doctors was approximately on par with the other countries. However, over the two decades, the density of doctors in Azerbaijan declined significantly, becoming more comparable to the levels observed in Armenia and Georgia.
+
+Georgia exhibited a markedly different trajectory. In 2000, it recorded the lowest density of nurses and the highest density of doctors among the three countries. Over the subsequent years, the number of nurses further decreased, but the density of doctors experienced a sharp increase, nearly tripling. By the final decade, Georgia not only had the largest density of doctors but also surpassed both Armenia and Azerbaijan in the density of nurses.
+
+Armenia demonstrated the most stability throughout the period. While there were some fluctuations in the density of healthcare professionals, the numbers remained relatively consistent within the same range over the twenty years.
+
+This analysis highlights distinct trends in the healthcare systems of the three countries, with Azerbaijan undergoing a notable reduction in doctor density, Georgia achieving substantial growth in both professions, and Armenia maintaining a steady balance.
+
+#### [Tobacco Usage and Obesity Rates Over Time (Hyperlink, click on it or look in the Github for 'Animations' folder for better quality)](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWVoYXc5aWRsaGl3cmc4ZG4xeHd6NHU2YnJoMWQ3dGxwbnRwdWZweCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UGBaJOtsp6MGdC1cKH/giphy.gif)
+
+This plot illustrates the trends in tobacco usage and obesity rates over time across Georgia, Armenia, and Azerbaijan. Georgia stands out as having the highest levels of tobacco usage, with Armenia closely following and Azerbaijan showing consistently lower levels of tobacco use compared to the other two countries. The obesity rates across these countries appear to reflect similar patterns, with Georgia exhibiting the highest levels of obesity, while Armenia and Azerbaijan display comparable, but slightly lower, obesity rates.
+As the timeline progresses, there is a noticeable increase in obesity rates across all three countries and a noticeable decrease in tobacco usage over time, with the exception of Georgia, which has almost constant tobacco usage but alarmingly high obesity rates. By the end of the observed period, Georgia’s tobacco usage and obesity rates remain the highest among the three countries. In Armenia, obesity rates also increase steadily, but tobacco usage continues to be relatively high compared to Azerbaijan.
+In Azerbaijan, there is a decline in tobacco usage and obesity rates over time. By the end, it’s interesting to note that obesity rates in Azerbaijan are similar to the tobacco usage in Armenia. The overall trend highlighted in the visualization may, in part, reflect the relationship between smoking cessation and weight gain. Quitting smoking can lead to increased obesity rates for several reasons: nicotine suppresses appetite and increases metabolism, so its absence may slow metabolism and increase appetite. Additionally, individuals often substitute food for smoking as a coping mechanism or experience improved taste and smell after quitting, which can result in higher calorie intake. This interplay may contribute to the rising obesity rates observed despite declining tobacco usage.
+
+#### [Alcohol Consumption Over Time (Hyperlink, click on it or look in the Github for 'Animations' folder for better quality)](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXh5czc5MTVkbDVpbWNiOHBnYnY4d2NkMGhvZ2JsdDlnZmhxaXhxcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/baE8WuDYdmkX4nRyPC/giphy.gif) 
+
+The plot presents a visualization of alcohol consumption trends in Armenia, Azerbaijan, and Georgia over a span of two decades. Throughout the observed period, Armenia and Azerbaijan maintained relatively stable levels of alcohol consumption, exhibiting minimal fluctuations year over year. In stark contrast, Georgia displayed consistently elevated alcohol consumption rates across the same timeframe. Unlike Armenia and Azerbaijan, Georgia’s alcohol consumption remained substantially higher, indicating a persistent and significant reliance on alcohol within its population.
+
+
+```  {r, echo = FALSE}
+fertility_mortality <- read.csv("Datasets_Clean/fertility_mortality.csv")
+
+filtered_data <- fertility_mortality %>%
+  select(Year, Region, Crude_Death_Rate) %>%
+  drop_na() %>%
+  mutate(
+    Year = as.numeric(Year),
+    Crude_Death_Rate = as.numeric(Crude_Death_Rate)
+  )
+
+ggplot(filtered_data, aes(x = Year, y = Region, fill = Crude_Death_Rate)) +
+  geom_tile() +
+  scale_fill_gradient(name = "Mortality Rate", low = "#ADD8E6", high = "#8B0000") +
+  labs(
+    title = "Mortality Rate Trends by Year and Region",
+    x = "Year",
+    y = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 90, hjust = 1),
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank(),
+    plot.background = element_blank()
+  )
+```
+The heatmap reveals mortality rate trends across Armenia, Azerbaijan, Georgia, and the global average from 1960 to 2020, highlighting the influence of significant historical events. During the Soviet era (1960–1988), Georgia's mortality rate remained relatively constant, while Armenia and Azerbaijan showed gradual improvements, reflecting advancements in healthcare and public health policies under centralized governance. Azerbaijan's high mortality rate in the 1950s can be attributed to industrialization and extensive oil extraction, which led to environmental degradation and increased health risks. The 1988 earthquake in Armenia caused a sharp localized spike in mortality rates due to the devastating loss of life and disruption of services. Following the collapse of the Soviet Union in 1991, mortality rates in Armenia and Georgia increased sharply as healthcare systems declined due to economic instability and political challenges. In contrast, Azerbaijan's discovery of oil resources in the 1990s fueled economic recovery, enabling investments in healthcare infrastructure and leading to improved mortality rates. Georgia’s civil war in the 1990s further intensified mortality challenges, while Armenia faced prolonged economic struggles. By the 2000s, Azerbaijan's health outcomes continued to improve alongside its growing economy, while Armenia and Georgia experienced slower recoveries. The COVID-19 pandemic and the 2020 Nagorno-Karabakh War caused renewed challenges, evident in slight increases in mortality during this period. These trends underscore how political stability, economic resources, and healthcare investments shape health outcomes in the region.
+
+
+```  {r, echo = FALSE}
+death_reasons <- read_excel('Datasets_Clean/death_reasons.xlsx', sheet = "All ages")  
+cleaned_data <- death_reasons %>%
+  select(`GHE cause`, Armenia, Azerbaijan, Georgia) %>%  
+  filter(!is.na(`GHE cause`) & !grepl("Population|^[A-Z]\\.$", `GHE cause`) & `GHE cause` != "All Causes") %>%  
+  drop_na()  
+
+normalized_data <- cleaned_data %>%
+  mutate(across(c(Armenia, Azerbaijan, Georgia), ~ (. - min(.)) / (max(.) - min(.)))) %>% 
+  rename(Cause = `GHE cause`) %>%
+  pivot_longer(cols = c(Armenia, Azerbaijan, Georgia), names_to = "Country", values_to = "Normalized_Death_Rate")
+
+normalized_data <- normalized_data %>%
+  group_by(Cause, Country) %>%
+  summarize(Normalized_Death_Rate = sum(Normalized_Death_Rate, na.rm = TRUE), .groups = "drop") 
+
+
+ggplot(normalized_data, aes(x = Country, y = Normalized_Death_Rate, group = Cause, color = Cause)) +
+  geom_line(size = 1.2, linetype = "solid") + 
+  geom_point(size = 3) + 
+  scale_color_manual(
+    values = c(
+      "Communicable, maternal, perinatal and nutritional conditions" = "#8B0000",  # Dark Red
+      "Injuries" = "#000080", 
+      "Noncommunicable diseases" = "#ADD8E6"
+    ),
+    name = "Cause of Death"
+  ) +
+  labs(
+    title = "Causes of Death Across Countries in 2021",
+    x = "Country",
+    y = "Normalized Death Rate"
+  ) +
+  theme_minimal() +
+   theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, vjust = 0.5, color = "#2F4F4F"), 
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text( hjust = 1),
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F", hjust = 0.5),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+    legend.position = "bottom"
+  )+
+  guides(color = guide_legend(ncol = 1))
+
+```
+The visualization compares the death rates by cause across Armenia, Azerbaijan, and Georgia, highlighting noncommunicable diseases, communicable diseases, and injuries. Noncommunicable diseases, such as cardiovascular conditions, diabetes, and cancer, are the leading causes of death across all three countries, with consistently high rates, reflecting shared regional factors like aging populations and lifestyle-related risks. Communicable diseases show a significant spike in Azerbaijan compared to Armenia and Georgia, likely due to disparities in healthcare access and public health infrastructure. Injuries, including accidents and violence, contribute minimally to overall mortality and remain consistently low across all three countries. These trends emphasize the need for targeted health policies, with Azerbaijan requiring stronger measures against communicable diseases, while Armenia and Georgia might focus more on reducing the burden of chronic illnesses through lifestyle interventions and preventive healthcare.
+
+```  {r, echo = FALSE}
+data_all_ages <- read_excel("Datasets_Clean/death_reasons.xlsx", sheet = "All ages")
+
+filtered_data <- data_all_ages %>%
+  filter(
+    !is.na(`GHE cause 3`) & 
+    !`GHE cause 3` %in% c("a.", "b.", "c.", "d.", "e.", "f.")
+  ) %>%
+  select(`GHE cause 3`, Armenia, Azerbaijan, Georgia)
+
+long_data <- filtered_data %>%
+  pivot_longer(cols = c(Armenia, Azerbaijan, Georgia), 
+               names_to = "Country", 
+               values_to = "Value") %>%
+  mutate(Value = as.numeric(Value)) %>%
+  filter(!is.na(Value))  
+top_causes <- long_data %>%
+  group_by(Country, `GHE cause 3`) %>%
+  summarize(Value = sum(Value, na.rm = TRUE)) %>% 
+  ungroup() %>%
+  group_by(Country) %>%
+  arrange(desc(Value)) %>% 
+  slice_head(n = 5) %>%   
+  mutate(Percentage = Value / sum(Value) * 100) %>% 
+  mutate(LabelAngle = cumsum(Value) - (Value / 2)) %>% 
+  ungroup()
+
+top_causes <- long_data %>%
+  group_by(Country, `GHE cause 3`) %>%
+  summarize(Value = sum(Value, na.rm = TRUE)) %>% 
+  ungroup() %>%
+  group_by(Country) %>%
+  arrange(desc(Value)) %>% 
+  slice_head(n = 5) %>%   
+  mutate(Percentage = Value / sum(Value) * 100) %>% 
+  ungroup()
+
+cause_colors <- c(
+  "Ischaemic heart disease" = "#D73027",    
+  "COVID-19" = "#4575B4",                    
+  "Stroke" = "#FDAE61",                       
+  "Other circulatory diseases" = "#91BFDB",    
+  "Trachea, bronchus, lung cancers" = "#E08214", 
+  "Road injury" = "#66C2A5",             
+  "Cirrhosis of the liver" = "#3288BD",  
+  "Lower respiratory infections" = "#ABDDA4"   
+)
+
+ggplot(top_causes, aes(x = "", y = Value, fill = `GHE cause 3`)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y", start = 0) +
+  facet_wrap(~ Country, scales = "free") +
+  geom_text(aes(label = paste0(round(Percentage, 1), "%")),
+            position = position_stack(vjust = 0.5),
+            size = 2, color = '#FFFFFF') +
+  labs(
+    title = "Top 5 Unique Causes of Death by Country in 2021",
+    x = NULL,
+    y = NULL,
+    fill = "Cause of Death"
+  ) +
+  scale_fill_manual(values = cause_colors, name = "Cause of Death") +  
+  guides(fill = guide_legend(title.position = "top", title.hjust = 0.5)) + 
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),  
+    legend.position = "bottom",
+    legend.title = element_text(size = 10, face = "bold"),             
+    legend.text = element_text(size = 6),                              
+    legend.key.size = unit(0.7, "lines"),                              
+    legend.spacing = unit(0.4, "lines"),                               
+    strip.text = element_text(size = 12, face = "bold", color = "#2F4F4F")
+  )
+
+```
+The pie charts illustrate the top five causes of death in Armenia, Azerbaijan, and Georgia, revealing both shared and unique health challenges. In Armenia, ischemic heart disease is the leading cause of death at 46.8%, followed by COVID-19 at 30.1%, with other circulatory diseases and respiratory illnesses making up the remainder. In Azerbaijan, COVID-19 is the leading cause, accounting for 42.2% of deaths, followed by ischemic heart disease at 36.8%, reflecting the heavy burden of the pandemic alongside existing cardiovascular health issues. In Georgia, COVID-19 and stroke are nearly equal as the leading causes of death, at 33.1% and 31.2% respectively, with ischemic heart disease ranking third. These trends highlight the significant impact of the pandemic on all three countries, while cardiovascular diseases remain a persistent health challenge across the region. The data underscores the need for targeted healthcare strategies to address both infectious diseases like COVID-19 and chronic conditions such as heart disease and stroke.
+
+```  {r, echo = FALSE}
+georgia <- read.csv("Datasets_Clean/georgia-carbon-co2-emissions.csv", skip = 8)
+armenia <- read.csv("Datasets_Clean/armenia-carbon-co2-emissions.csv", skip = 8)
+azerbaijan <- read.csv("Datasets_Clean/azerbaijan-carbon-co2-emissions.csv", skip = 8)
+
+georgia$Country <- "Georgia"
+armenia$Country <- "Armenia"
+azerbaijan$Country <- "Azerbaijan"
+
+emissions <- bind_rows(georgia, armenia, azerbaijan)
+colnames(emissions) <- c("Date", "Metric_tones_per_capita", "Kilotones_of_CO2", "Country")
+
+ggplot(emissions, aes(x = Date, y = Metric_tones_per_capita, color = Country, group = Country)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  theme_minimal() +
+  labs(
+    title = "CO2 Emissions Per Capita Over Time",
+    x = "Year",
+    y = "CO2 Emissions Per Capita (Metric Tons)",
+    color = "Country"
+  ) +
+  scale_x_discrete(
+    labels = function(x) substr(x, nchar(x) - 3, nchar(x)) 
+  ) +
+  scale_color_manual(
+    values = c("Armenia" = "#8B0000", "Azerbaijan" = "#ADD8E6", "Georgia" = "#000080"),
+    name = "Country"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "#2F4F4F"), 
+    axis.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),            
+    axis.text.x = element_text(size = 10, angle = 90, hjust = 1, color = "#2F4F4F"),
+    axis.text.y = element_text(size = 10, color = "#2F4F4F"),
+    legend.title = element_text(size = 12, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 10, color = "#2F4F4F"),
+    legend.position = "bottom"
+  )
+
+
+```
+The graph illustrates CO2 emissions per capita in Armenia, Azerbaijan, and Georgia from 1990 to 2020, showcasing significant differences in emission levels and trends among the three countries. Azerbaijan had the highest emissions per capita in 1990, reflecting its role as a major oil and gas producer during the Soviet era. Emissions declined sharply in the early 1990s due to the collapse of the Soviet Union and reduced industrial activity but began to rise steadily from the 2000s as the country recovered economically and expanded energy production. Georgia and Armenia also experienced significant drops in emissions following the Soviet collapse, driven by economic disruptions and decreased industrial output. Georgia’s emissions have remained relatively stable since the mid-1990s, with modest increases linked to gradual economic development. Armenia’s emissions per capita have consistently been the lowest, reflecting limited industrialization and a reliance on renewable energy sources like hydropower. These trends highlight the distinct economic trajectories of the three countries, with Azerbaijan’s oil-driven recovery contrasting with the slower industrialization and energy transitions in Armenia and Georgia.
+
+```  {r, echo = FALSE}
+
+death_air_pollution <- read.csv("Datasets_Clean/death_air_pollution.csv")
+
+countries_of_interest <- c("Armenia", "Azerbaijan", "Georgia")
+filtered_data <- death_air_pollution %>%
+  filter(GEO_NAME_SHORT %in% countries_of_interest) %>%
+  select(DIM_TIME, GEO_NAME_SHORT, RATE_PER_100000_N)
+
+filtered_data <- filtered_data %>%
+  group_by(DIM_TIME, GEO_NAME_SHORT) %>%
+  summarise(RATE_PER_100000_N = mean(RATE_PER_100000_N, na.rm = TRUE))
+
+ggplot(filtered_data, aes(x = DIM_TIME, y = RATE_PER_100000_N, color = GEO_NAME_SHORT)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(
+    title = "Deaths Caused by Air Pollution",
+    subtitle = "Per 100,000 Population",
+    x = "Year",
+    y = "Rate Per 100,000 Population",
+    color = "Country"
+  ) +
+  scale_color_manual(
+    values = c("Armenia" = "#8B0000", "Azerbaijan" = "#ADD8E6", "Georgia" = "#000080"), 
+    name = "Country"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "#2F4F4F"), 
+    plot.subtitle = element_text(hjust = 0.5, size = 12, color = "#2F4F4F"),      
+    axis.title = element_text(size = 10, color = "#2F4F4F", face = "bold"),         
+    axis.text.x = element_text(size = 10, angle = 90, hjust = 1, color = "#2F4F4F"),
+    axis.text.y = element_text(size = 10, color = "#2F4F4F"),
+    legend.title = element_text(size = 12, face = "bold", color = "#2F4F4F"),       
+    legend.text = element_text(size = 10, color = "#2F4F4F"),                          
+    legend.position = "bottom",                                             
+    panel.grid.major = element_line(color = "#D3D3D3"),                     
+    panel.grid.minor = element_blank(),                                     
+    panel.background = element_blank(),                                     
+    plot.background = element_blank()                                       
+  )
+
+
+```
+The line graph illustrates trends in death rates caused by air pollution (per 100,000 population) in Armenia, Azerbaijan, and Georgia over time, highlighting significant regional progress in reducing pollution-related mortality. Georgia initially had the highest death rate, exceeding 50 per 100,000 population, but experienced a sharp decline over time, falling to below 35 per 100,000, likely reflecting effective environmental policies and improvements in air quality. Azerbaijan followed a similar trend, starting slightly below Georgia and gradually declining, yet in 2010, despite being significantly more polluted than Georgia, as seen in our previous visualization of CO2 emissions, the air pollution-related death rates in Azerbaijan and Georgia were nearly equal. Armenia consistently had the lowest rates, beginning at about 30 per 100,000 and showing a slight but stable decline, suggesting better historical management of air pollution or lower levels of industrialization compared to its neighbors. These trends demonstrate the region's collective efforts to mitigate air pollution, with notable successes in reducing its impact on public health.
+
+```  {r, echo = FALSE}
+
+suicide_data <- read.csv("Datasets_Clean/suicide-rate.csv")
+
+suicide_data <- suicide_data %>%
+  mutate(Year = as.numeric(substr(Date, nchar(Date) - 3, nchar(Date))))
+
+suicide_long <- suicide_data %>%
+  select(Country, Year, Male, Female) %>%
+  pivot_longer(cols = c(Male, Female), 
+               names_to = "Gender", 
+               values_to = "Suicide_Rate")
+
+ggplot(suicide_long, aes(x = Year, y = Suicide_Rate, fill = Gender)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  facet_wrap(~ Country, scales = "free_x") +
+  scale_fill_manual(
+    values = c(
+      "Male" =  "#ADD8E6",  
+      "Female" = "#8B0000" 
+    ),
+    name = "Gender"
+  ) +
+  labs(
+    title = "Suicide Rates by Gender and Country",
+    x = "Year",
+    y = "Suicide Rate",
+    fill = "Gender"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),
+    axis.title = element_text(size = 12, face = "bold", color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 90, hjust = 1, color = "#2F4F4F", size = 8),
+    strip.text = element_text(size = 12, face = "bold", color = "#2F4F4F"),
+    legend.title = element_text(size = 10, face = "bold", color = "#2F4F4F"),
+    legend.text = element_text(size = 9, color = "#2F4F4F"),
+    legend.position = "top",
+    panel.grid.major = element_line(color = "#D3D3D3"),
+  )
+```
+The bar chart illustrates suicide rates by gender in Armenia, Azerbaijan, and Georgia from 2000 to 2020, highlighting notable differences between countries and genders. In all three countries, male suicide rates are consistently higher than female rates, reflecting broader global patterns. Georgia has the highest rates overall, with male rates exceeding 15 per 100,000 by 2015 and remaining elevated, while female rates also rise to around 4-5 per 100,000. Armenia shows fluctuating rates, peaking around 2015 with male rates reaching close to 10 per 100,000, while female rates remain significantly lower at 2-3 per 100,000. Azerbaijan has the lowest and most stable rates, with male rates slightly exceeding 5 per 100,000 and female rates consistently below 2 per 100,000. These trends underscore the need for targeted mental health initiatives across the region, with particular focus on addressing the high rates among males in Georgia and Armenia and sustaining the lower rates in Azerbaijan.
+
+```  {r, echo = FALSE}
+death_reasons <- read_excel('Datasets_Clean/death_reasons.xlsx', sheet = "All ages")
+
+population_row <- death_reasons[2, ] %>% 
+  slice(1) %>% 
+  select(Armenia, Azerbaijan, Georgia) %>% 
+  pivot_longer(cols = everything(), names_to = "Country", values_to = "Population") %>%
+  mutate(Population = as.numeric(Population) * 1000) 
+
+death_reasons_cleaned <- death_reasons[-2, ]
+
+mental_disorders_data <- death_reasons_cleaned %>%
+  filter(`GHE cause 2` == "Mental and substance use disorders") %>%
+  select(`GHE cause 2`, Armenia, Azerbaijan, Georgia)
+
+mental_disorders_long <- mental_disorders_data %>%
+  pivot_longer(cols = c(Armenia, Azerbaijan, Georgia),
+               names_to = "Country",
+               values_to = "Deaths") %>%
+  mutate(Deaths = as.numeric(Deaths)) %>%
+  filter(!is.na(Deaths))  
+
+mental_disorders_normalized <- mental_disorders_long %>%
+  inner_join(population_row, by = "Country") %>%
+  mutate(DeathRate = (Deaths / Population) * 100000) 
+
+ggplot(mental_disorders_normalized, aes(x = Country, y = DeathRate, fill = Country)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  scale_fill_manual(
+    values = c(
+      "Armenia" = "#8B0000",  # Dark Red
+      "Azerbaijan" = "#ADD8E6",  # Light Blue
+      "Georgia" = "#000080"  # Gold
+    )
+  ) +
+  labs(
+    title = "Mental and Substance Use Disorder Deaths in 2021",
+    x = "Country",
+    y = "Death Rate (per 100,000)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "#2F4F4F"),  
+    axis.title = element_text(size = 12, face = "bold", color = "#2F4F4F"),         
+    axis.text = element_text(size = 10, color = "#2F4F4F"),                         
+    panel.grid.major = element_line(color = "#D3D3D3"),                             
+    legend.position = "null"
+   
+  )
+```
+
+The bar chart compares deaths caused by mental and substance use disorders across Armenia, Azerbaijan, and Georgia. Azerbaijan exhibits the highest rate, significantly exceeding the other two countries, indicating a major public health issue related to mental health and substance use disorders. Georgia follows with a moderate rate, while Armenia reports the lowest rates, suggesting comparatively lesser mortality from these causes.
+
+This disparity may reflect differences in healthcare systems, social attitudes towards mental health, and the prevalence of substance use disorders in these countries. Azerbaijan’s elevated rate could indicate a higher burden of substance abuse or less effective mental health interventions, while Georgia’s moderate rate highlights an intermediate challenge. Armenia’s low rate may reflect either better management of these disorders or underreporting due to cultural stigma. These findings underscore the need for focused mental health and addiction treatment programs, particularly in Azerbaijan and Georgia, to reduce preventable deaths and improve quality of life.
+
+## Conclusion
+
+In conclusion, this study reveals that while Armenia, Georgia, and Azerbaijan share an everyday historical and regional context, their healthcare systems diverge significantly due to economic development differences and public health policies. Azerbaijan's higher healthcare accessibility score suggests that its system is better equipped to meet the needs of its larger population, yet the decline in doctor density over the years raises concerns about long-term sustainability. Georgia, while showing significant improvements in the density of healthcare professionals, still faces challenges in providing equitable and affordable care to all its citizens. Armenia, with the lowest accessibility score and the most consistent but modest healthcare workforce, struggles to meet the healthcare demands of its smaller population. These differences underscore the impact of each country's national policies, economic conditions, and healthcare reforms. To minimize the imbalance, each country must adopt tailored strategies -Azerbaijan to maintain its workforce while addressing accessibility, Georgia to further invest in healthcare infrastructure and affordability, and Armenia to improve service coverage and healthcare workforce capacity. Together, these efforts would promote more balanced healthcare outcomes across the region.
+
+## References
+
+
+Accessibility of healthcare services, 1-7 (best) | Indicator Profile | Prosperity Data360. (n.d.). Prosperity Data360. Retrieved from  https://prosperitydata360.worldbank.org/en/indicator/WEF+TTDI+EOSQ166
+
+Armenia. (n.d.). Datadot. World Health Organization. Retrieved from 
+https://data.who.int/countries/051
+
+Armenia life expectancy 1950-2024. (n.d.). MacroTrends. Retrieved from 
+https://www.macrotrends.net/global-metrics/countries/ARM/armenia/life-expectancy
+
+Armenia carbon (CO2) emissions 1990-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/ARM/armenia/carbon-co2-emissions
+
+Armenia clean water access 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/ARM/Armenia/clean-water-access-statistics
+
+Armenia healthcare spending 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/ARM/Armenia/healthcare-spending
+
+Armenia rural population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/ARM/armenia/rural-population
+
+Armenia urban population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/ARM/armenia/urban-population
+
+Armenia. (n.d.-b). Datadot. World Health Organization. Retrieved from https://data.who.int/countries/051
+
+Armenia. (n.d.-c). Datadot. World Health Organization. Retrieved from https://data.who.int/countries/051
+
+Armenia. (n.d.-d). Datadot. World Health Organization. Retrieved from
+https://data.who.int/countries/051
+
+Azerbaijan life expectancy 1950-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/aze/azerbaijan/life-expectancy
+
+Azerbaijan carbon (CO2) emissions 1990-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/aze/azerbaijan/carbon-co2-emissions
+
+Azerbaijan clean water access 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/aze/azerbaijan/clean-water-access-statistics
+
+Azerbaijan healthcare spending 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/aze/azerbaijan/healthcare-spending
+
+Azerbaijan rural population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/aze/azerbaijan/rural-population
+
+Azerbaijan urban population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/AZE/azerbaijan/urban-population
+
+Georgia life expectancy 1950-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/geo/georgia/life-expectancy
+
+Georgia carbon (CO2) emissions 1990-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/geo/georgia/carbon-co2-emissions
+
+Georgia clean water access 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/geo/Georgia/clean-water-access-statistics
+
+Georgia healthcare spending 2000-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/geo/Georgia/healthcare-spending
+
+Georgia rural population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/geo/Georgia/rural-population
+
+Georgia urban population 1960-2024. (n.d.). MacroTrends. Retrieved from
+https://www.macrotrends.net/global-metrics/countries/GEO/georgia/urban-population
+
+United Nations, Department of Economic and Social Affairs, Population Division. (n.d.). World Population Prospects: The 2022 Revision. United Nations. Retrieved December 5, 2024, from
+https://population.un.org/dataportal/home?df=d74d4d4b-2770-4f3d-ae6a-1190bb7afcd7
+
+Verulava, T., & Maglakelidze, T. (2017). Health Financing Policy in the South Caucasus: Georgia, Armenia, Azerbaijan. Georgian National Academy of Sciences. Retrieved from
+http://eprints.iliauni.edu.ge/6592/
+
+World Population Prospects - Population Division - United Nations. (n.d.). United Nations. Retrieved from
+https://population.un.org/wpp/Download/Standard/MostUsed/
+
+
