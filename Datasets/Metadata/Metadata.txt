@@ -1,0 +1,178 @@
+Alcohol_consumption.csv
+Description: This dataset appears to measure alcohol consumption per capita across genders in Azerbaijan over several years.
+Columns:
+DIM_TIME: Year of observation.
+GEO_NAME_SHORT: Geographic area.
+DIM_SEX: Gender (Male or Female).
+RATE_PER_CAPITA_N: Rate of alcohol consumption per capita.
+Units: Amount of alcohol consumed per adult (15+ years) over a calendar year, in litres of pure alcohol.
+Source: World Health Organization
+
+Armenia-.csv, Georgia-.csv, Azerbaijan-.csv
+Description: This datasets focus on life expectancy in Armenia, Georgia, Azerbaijan over time, showing annual percent changes.
+Columns:
+Date: Year of observation.
+Life Expectancy: Average life expectancy in respective country for the given year.
+% change: Annual percent change in life expectancy.
+Units: Life expectancy in years; % change in percentage.
+Source: Macrotrends, also available at World Health Organization
+
+Armenia-carbon-co2-emissions.csv, Georgia-carbon-co2-emissions.cs, Azerbaijan-carbon-co2-emissions.csv.
+Description: This dataset tracks carbon dioxide emissions in Armenia, Georgia, and Azerbaijan measured in both kilotons and metric tons per capita, over several years.
+Columns:
+Year: The year of observation.
+CO2 Emissions (kilotons): Total carbon dioxide emissions in kilotons.
+CO2 Emissions per Capita (metric tons): Emissions per person in metric tons.
+Units: Kilotons for total emissions; metric tons per capita for individual contribution.
+Source: MacroTrends.
+
+Armenia-clean-water-access-statistics.csv, Georgia-clean-water-access-statistics.csv, Azerbaijan-clean-water-access-statistics.csv
+Description: These datasets track clean water access in Armenia, Georgia, and Azerbaijan, detailing the percentage of the population using improved water sources over several years.
+Columns:
+Year: The year of observation.
+Clean Water Access (% of Population): Percentage of the population with access to clean water.
+Annual Change (%): Yearly percentage change in clean water access.
+Units: Percentages for clean water access and annual change.
+Source: MacroTrends
+Armenia-healthcare-spending.csv, Georgia-healthcare-spending.csv, Azerbaijan-healthcare-spending.csv
+Description: These datasets provide information on healthcare spending in Armenia, Georgia, and Azerbaijan over time, including GDP allocation, per capita spending, and annual percentage changes.
+Columns:
+Year: The year of observation.
+Healthcare Spending Per Capita (US $): Annual healthcare spending per person in USD.
+Healthcare Spending as % of GDP: Healthcare expenditure as a percentage of GDP.
+Annual Change (%): Yearly percentage change in healthcare spending.
+Units: USD for per capita spending; percentages for GDP share and annual changes.
+Source: MacroTrends.
+
+Armenia-rural-population.csv, Georgia-rural-population.csv, Azerbaijan-rural-population.csv
+Description: These datasets track the rural population in Armenia, Georgia, and Azerbaijan over time, including its percentage of the total population and annual percentage changes.
+Columns:
+Year: The year of observation.
+Rural Population: Total rural population.
+% of Total Population: Percentage of the rural population relative to the total population.
+Annual Change (%): Yearly change in the rural population.
+Units: Absolute numbers for population; percentages for relative and annual change.
+Source: MacroTrends.
+
+armenia-urban-population.csv, Georgia-urban-population.csv, Azerbaijan-urban-population.csv
+Description: These datasets track the urban population in Armenia, Georgia, and Azerbaijan over time, including its percentage of the total population and annual percentage changes.
+Columns:
+Year: The year of observation.
+Urban Population: Total urban population.
+% of Total Population: Percentage of the urban population relative to the total population.
+Annual Change (%): Yearly change in the urban population.
+Units: Absolute numbers for population; percentages for relative and annual change.
+Source: MacroTrends.
+
+death_air_pollution.csv
+Description: This dataset tracks deaths attributed to air pollution across various countries, segmented by gender and age.
+Columns:
+DIM_TIME: Year of observation.
+GEO_NAME_SHORT: Country or geographic area.
+DIM_SEX: Gender (Male, Female, or Total).
+DIM_AGE: Age group (if specified).
+RATE_PER_100000_N: Death rate per 100,000 people.
+RATE_PER_100000_NL: Lower bound of the death rate estimate.
+RATE_PER_100000_NU: Upper bound of the death rate estimate.
+Units: Deaths per 100,000 people.
+Source: World Health Organization
+
+death_reasons.xlsx
+Description: This Excel file contains multiple sheets detailing causes of death by age group and geographic regions.
+Sheets:
+Notes: General information and data methodology.
+All ages: Causes of death across all ages.
+Additional sheets for specific age groups (e.g., 0-4, 5-14, 15-29).
+Columns: primarily include causes of death and corresponding statistics.
+Source: World Health Organization
+
+Demographic_ARM_AZE_GEO.xlsx
+Description: This dataset provides demographic details for Armenia, Azerbaijan, and Georgia, covering population, mortality, migration, and density.
+Columns:
+Region: Country name.
+Year: Year of observation.
+Total Population: Population count as of January and July.
+Population Density: Persons per square kilometer.
+Mortality: Death rates by age and gender.
+Additional columns include migration statistics and life expectancy.
+Source: United Nations demographic datasets
+
+doctor_density.csv
+Description: This dataset tracks the density of doctors (physicians) per 10,000 people in Azerbaijan, Armenia, and Georgia over time.
+Columns:
+DIM_TIME: Year of observation.
+GEO_NAME_SHORT: Country (e.g., Armenia).
+RATE_PER_10000_N: Number of doctors per 10,000 population.
+Units: Doctors per 10,000 people.
+Source: World Health Organization
+
+nurse_density.csv
+Description: This dataset tracks the density of doctors (physicians) per 10,000 people in Azerbaijan, Armenia, and Georgia over time.
+Columns:
+DIM_TIME: Year of observation.
+GEO_NAME_SHORT: Country (e.g., Armenia).
+RATE_PER_10000_N: Number of doctors per 10,000 population.
+Units: Doctors per 10,000 people.
+Source: World Health Organization
+
+
+Fertility_mortality.csv 
+Description: This dataset provides global and regional statistics on fertility, mortality, and population demographics.
+Columns:
+Year: Year of observation.
+Population: Total population by gender and age groups.
+Crude Birth Rate: Number of live births per 1,000 people.
+Total Fertility Rate: Average number of children born per woman.
+Life Expectancy: Life expectancy at birth and at specific ages.
+Additional columns include death rates and mortality statistics by age and gender.
+Units: Vary (e.g., rates per 1,000 people, years for life expectancy).
+Source: United Nations
+
+
+
+Healthcare.xlsx
+Description: This dataset measures the accessibility of healthcare services on a scale of 1 to 7, where 7 is the best score. The data spans multiple economies, providing insights into healthcare access trends across regions. This filtered dataset includes data specifically for Armenia, Georgia, and Azerbaijan.
+Columns:
+DIM_TIME: Year of observation (2019-2021).
+GEO_NAME_SHORT: Geographic area (Armenia, Georgia, Azerbaijan).
+DIM_INDICATOR: “Accessibility of healthcare services” indicator.
+RATE_VALUE: Value of healthcare accessibility (scale: 1-7, 7 is best).
+Units: Scale from 1 to 7 (7 is the highest level of accessibility).
+Source: World Bank Group
+Link: World Bank Prosperity Data 360
+
+Obesity.csv
+Description: This dataset provides global and regional statistics on obesity rates among different demographic groups.
+Columns:
+	•	DIM_TIME: Year of observation.
+	•	GEO_NAME_SHORT: Country name.
+	•	DIM_SEX: Gender group (Male, Female, or Total).
+	•	RATE_PER_100_N: Obesity rate per 100 people (mean value).
+	•	RATE_PER_100_NL: Lower bound of obesity rate per 100 people.
+	•	RATE_PER_100_NU: Upper bound of obesity rate per 100 people.
+Units: Percentage rates (%).
+Source: World Health Organization.
+
+Suicide-rate.csv
+Description: This dataset contains global and regional suicide rates, disaggregated by gender and country.
+Columns:
+Date: Year of observation.
+Total: Total suicide rate per 100,000 people.
+Male: Suicide rate for males per 100,000 people.
+Female: Suicide rate for females per 100,000 people.
+Country: Country name.
+Units: Rates per 100,000 people.
+Source: World Health Organization.
+Tobacco_use.csv
+
+
+Description: This dataset includes statistics on tobacco usage prevalence across different demographic groups and regions.
+Columns:
+DIM_TIME: Year of observation.
+GEO_NAME_SHORT: Country name.
+DIM_SEX: Gender group (Male, Female, or Total).
+PERCENT_POP_N: Percentage of the population using tobacco
+PERCENT_POP_NL: Lower bound of the percentage of the population using tobacco.
+PERCENT_POP_NU: Upper bound of the percentage of the population using tobacco.
+Units: Percentage rates (%).
+Source: World Health Organization.
