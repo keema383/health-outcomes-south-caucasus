@@ -1,0 +1,82 @@
+---
+title: "Animations"
+author: "Narek Ghukasyan (B)"
+date: "2024-12-05"
+output: html_document
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(GGally)
+library(readxl)
+library(ggmap)
+library(maps)
+library(sf)
+library(lubridate)
+library(scales)
+library(gganimate)
+library(gifski)
+library(fmsb)
+library(RColorBrewer)
+library(animation)
+library(gridExtra)
+```
+
+
+```{r}
+Demographic_ARM_AZE_GEO <- read_excel("Desktop/DataVis/GITHUB_PROJECt/HealthcareOutcomesSouthCaucasus/Datasets/Demographic_ARM_AZE_GEO.xlsx")
+
+population_change <- df %>%
+  select(c(1, 4, 14, 15)) %>%
+  rename(
+    Region = `Region, subregion, country or area *`
+  ) %>%
+  mutate(Year = as.numeric(Year)) %>%
+  group_by(Region) %>%
+  arrange(Year) %>%
+  mutate(Cumulative_Change = cumsum(`Population Change (thousands)`))
+
+custom_palette <- c(
+  "Armenia" = "#8B0000",  # Dark Red
+  "Azerbaijan" = "#000080",  # Navy Blue
+  "Georgia" = "#ADD8E6"  # Light Blue
+)
+
+animated_pop_change <- ggplot(population_change, aes(
+  x = Year, 
+  y = Cumulative_Change, 
+  group = Region, 
+  color = Region
+)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  facet_wrap(~ Region, scales = "free_y") +
+  labs(
+    title = "Cumulative Population Growth Across Countries",
+    x = "Year",
+    y = "Cumulative Population Change (in Thousands)"
+  ) +
+  scale_color_manual(values = custom_palette) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2F4F4F"),  # Charcoal Gray
+    axis.title = element_text(size = 12, color = "#2F4F4F"),
+    axis.text = element_text(size = 10, color = "#2F4F4F"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text = element_text(size = 14, face = "bold", color = "#2F4F4F"), 
+    legend.position = "none",  # Removed legend
+    panel.grid.major = element_line(color = "#C0C0C0"),  # Cool Silver
+    panel.grid.minor = element_line(color = "#C0C0C0"),
+    plot.background = element_rect(fill = "#F5F5F5")  # White Smoke
+  ) +
+  transition_reveal(Year) +
+  ease_aes("linear")
+
+population_change <- animate(animated_pop_change, nframes = 100, fps = 8, 
+                             width = 800, height = 600, end_pause = 20)
+
+anim_save("population_change.gif", animation = population_change)
+```
+
